@@ -1,0 +1,647 @@
+openapi: 3.0.3
+info:
+  title: 'Tech Challenge'
+  description: ''
+  version: 1.0.0
+servers:
+  -
+    url: 'http://localhost'
+paths:
+  /api/auth/login:
+    post:
+      summary: Login
+      operationId: login
+      description: ''
+      parameters: []
+      responses:
+        200:
+          description: ''
+          content:
+            application/json:
+              schema:
+                type: object
+                example:
+                  data:
+                    token: 1|tBxR3nEX07K9oAuwpf2DBNd5uyvydTan2dExMEqW4031029
+                properties:
+                  data:
+                    type: object
+                    properties:
+                      token:
+                        type: string
+                        example: 1|tBxR3nEX07K9oAuwpf2DBNd5uyvydTan2dExMEqW4031029
+        500:
+          description: ''
+          content:
+            application/json:
+              schema:
+                type: object
+                example:
+                  error: 'Error: Something went wrong'
+                properties:
+                  error:
+                    type: string
+                    example: 'Error: Something went wrong'
+      tags:
+        - Auth
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                document:
+                  type: string
+                  description: 'The document of the client. Must follow the format.'
+                  example: '"000.000.000-00".'
+              required:
+                - document
+      security: []
+  /api/auth/logout:
+    post:
+      summary: Logout
+      operationId: logout
+      description: ''
+      parameters: []
+      responses:
+        200:
+          description: ''
+          content:
+            application/json:
+              schema:
+                type: object
+                example:
+                  message: 'Logged out successfully'
+                properties:
+                  message:
+                    type: string
+                    example: 'Logged out successfully'
+        400:
+          description: ''
+          content:
+            application/json:
+              schema:
+                type: object
+                example:
+                  message: 'Token not provided'
+                properties:
+                  message:
+                    type: string
+                    example: 'Token not provided'
+        500:
+          description: ''
+          content:
+            application/json:
+              schema:
+                type: object
+                example:
+                  error: 'Error: A general error has occurred'
+                properties:
+                  error:
+                    type: string
+                    example: 'Error: A general error has occurred'
+      tags:
+        - Auth
+      security: []
+  /api/clients:
+    post:
+      summary: Store
+      operationId: store
+      description: ''
+      parameters: []
+      responses:
+        201:
+          description: ''
+          content:
+            application/json:
+              schema:
+                type: object
+                example:
+                  data:
+                    name: 'John Doe'
+                    document: 000.000.000-00
+                    id: 1
+                  message: ok
+                properties:
+                  data:
+                    type: object
+                    properties:
+                      name:
+                        type: string
+                        example: 'John Doe'
+                      document:
+                        type: string
+                        example: 000.000.000-00
+                      id:
+                        type: integer
+                        example: 1
+                  message:
+                    type: string
+                    example: ok
+        500:
+          description: ''
+          content:
+            application/json:
+              schema:
+                type: object
+                example:
+                  error: 'Error: Something went wrong'
+                properties:
+                  error:
+                    type: string
+                    example: 'Error: Something went wrong'
+      tags:
+        - Client
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                name:
+                  type: string
+                  description: 'The name of the client.'
+                  example: 'John Doe'
+                document:
+                  type: string
+                  description: 'The document of the client. Must follow the format "000.000.000-00".'
+                  example: ullam
+              required:
+                - name
+                - document
+      security: []
+  /api/orders:
+    get:
+      summary: Index
+      operationId: index
+      description: ''
+      parameters: []
+      responses:
+        200:
+          description: ''
+          content:
+            application/json:
+              schema:
+                type: object
+                example:
+                  data:
+                    -
+                      id: 1
+                      status: received
+                      clients:
+                        id: 1
+                        name: Test
+                        document: 000.000.00-00
+                      products:
+                        -
+                          id: 3
+                          name: Beer
+                          price: '14.90'
+                        -
+                          id: 5
+                          name: Cheeseburger
+                          price: '29.90'
+                properties:
+                  data:
+                    type: array
+                    example:
+                      -
+                        id: 1
+                        status: received
+                        clients:
+                          id: 1
+                          name: Test
+                          document: 000.000.00-00
+                        products:
+                          -
+                            id: 3
+                            name: Beer
+                            price: '14.90'
+                          -
+                            id: 5
+                            name: Cheeseburger
+                            price: '29.90'
+                    items:
+                      type: object
+                      properties:
+                        id:
+                          type: integer
+                          example: 1
+                        status:
+                          type: string
+                          example: received
+                        clients:
+                          type: object
+                          properties:
+                            id:
+                              type: integer
+                              example: 1
+                            name:
+                              type: string
+                              example: Test
+                            document:
+                              type: string
+                              example: 000.000.00-00
+                        products:
+                          type: array
+                          example:
+                            -
+                              id: 3
+                              name: Beer
+                              price: '14.90'
+                            -
+                              id: 5
+                              name: Cheeseburger
+                              price: '29.90'
+                          items:
+                            type: object
+                            properties:
+                              id:
+                                type: integer
+                                example: 3
+                              name:
+                                type: string
+                                example: Beer
+                              price:
+                                type: string
+                                example: '14.90'
+      tags:
+        - Order
+      security: []
+    post:
+      summary: Store
+      operationId: store
+      description: ''
+      parameters: []
+      responses:
+        201:
+          description: ''
+          content:
+            application/json:
+              schema:
+                type: object
+                example:
+                  data:
+                    client_id: 2
+                    id: 10
+                  message: ok
+                properties:
+                  data:
+                    type: object
+                    properties:
+                      client_id:
+                        type: integer
+                        example: 2
+                      id:
+                        type: integer
+                        example: 10
+                  message:
+                    type: string
+                    example: ok
+        500:
+          description: ''
+          content:
+            application/json:
+              schema:
+                type: object
+                example:
+                  error: 'Error: Something went wrong'
+                properties:
+                  error:
+                    type: string
+                    example: 'Error: Something went wrong'
+      tags:
+        - Order
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                products_id:
+                  type: array
+                  description: 'An array of product IDs to be included in the order.'
+                  example:
+                    - 1
+                    - 2
+                    - 3
+                  items:
+                    type: string
+              required:
+                - products_id
+      security: []
+  /api/products:
+    get:
+      summary: Index
+      operationId: index
+      description: ''
+      parameters: []
+      responses:
+        200:
+          description: ''
+          content:
+            application/json:
+              schema:
+                type: object
+                example:
+                  data:
+                    -
+                      id: 1
+                      name: 'Product 1'
+                      price: 100
+                    -
+                      id: 2
+                      name: 'Product 2'
+                      price: 200
+                properties:
+                  data:
+                    type: array
+                    example:
+                      -
+                        id: 1
+                        name: 'Product 1'
+                        price: 100
+                      -
+                        id: 2
+                        name: 'Product 2'
+                        price: 200
+                    items:
+                      type: object
+                      properties:
+                        id:
+                          type: integer
+                          example: 1
+                        name:
+                          type: string
+                          example: 'Product 1'
+                        price:
+                          type: integer
+                          example: 100
+      tags:
+        - Product
+      security: []
+    post:
+      summary: Store
+      operationId: store
+      description: ''
+      parameters: []
+      responses:
+        201:
+          description: ''
+          content:
+            application/json:
+              schema:
+                type: object
+                example:
+                  data:
+                    id: 1
+                    name: 'New Product'
+                    price: 19.99
+                  message: ok
+                properties:
+                  data:
+                    type: object
+                    properties:
+                      id:
+                        type: integer
+                        example: 1
+                      name:
+                        type: string
+                        example: 'New Product'
+                      price:
+                        type: number
+                        example: 19.99
+                  message:
+                    type: string
+                    example: ok
+        500:
+          description: ''
+          content:
+            application/json:
+              schema:
+                type: object
+                example:
+                  error: 'Error: Something went wrong'
+                properties:
+                  error:
+                    type: string
+                    example: 'Error: Something went wrong'
+      tags:
+        - Product
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                name:
+                  type: string
+                  description: 'The name of the product.'
+                  example: '"New Product"'
+                price:
+                  type: number
+                  description: 'The price of the product.'
+                  example: 19.99
+              required:
+                - name
+                - price
+      security: []
+  '/api/products/categories/{category}':
+    get:
+      summary: 'Search By Category'
+      operationId: searchByCategory
+      description: ''
+      parameters: []
+      responses:
+        200:
+          description: ''
+          content:
+            application/json:
+              schema:
+                type: object
+                example:
+                  data:
+                    -
+                      id: 1
+                      name: 'Product 1'
+                      price: 100
+                      category_id: 1
+                    -
+                      id: 2
+                      name: 'Product 2'
+                      price: 200
+                      category_id: 1
+                properties:
+                  data:
+                    type: array
+                    example:
+                      -
+                        id: 1
+                        name: 'Product 1'
+                        price: 100
+                        category_id: 1
+                      -
+                        id: 2
+                        name: 'Product 2'
+                        price: 200
+                        category_id: 1
+                    items:
+                      type: object
+                      properties:
+                        id:
+                          type: integer
+                          example: 1
+                        name:
+                          type: string
+                          example: 'Product 1'
+                        price:
+                          type: integer
+                          example: 100
+                        category_id:
+                          type: integer
+                          example: 1
+      tags:
+        - Product
+      security: []
+    parameters:
+      -
+        in: path
+        name: category
+        description: 'The ID of the category to search.'
+        example: 1
+        required: true
+        schema:
+          type: integer
+  '/api/products/{product}':
+    patch:
+      summary: Update
+      operationId: update
+      description: ''
+      parameters: []
+      responses:
+        200:
+          description: ''
+          content:
+            application/json:
+              schema:
+                type: object
+                example:
+                  data:
+                    id: 1
+                    name: 'New Product'
+                    price: 19.99
+                  message: ok
+                properties:
+                  data:
+                    type: object
+                    properties:
+                      id:
+                        type: integer
+                        example: 1
+                      name:
+                        type: string
+                        example: 'New Product'
+                      price:
+                        type: number
+                        example: 19.99
+                  message:
+                    type: string
+                    example: ok
+        500:
+          description: ''
+          content:
+            application/json:
+              schema:
+                type: object
+                example:
+                  error: 'Error: Something went wrong'
+                properties:
+                  error:
+                    type: string
+                    example: 'Error: Something went wrong'
+      tags:
+        - Product
+      requestBody:
+        required: false
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                name:
+                  type: string
+                  description: 'nullable The name of the product.'
+                  example: '"Edited Product"'
+                price:
+                  type: number
+                  description: 'nullable The price of the product.'
+                  example: 29.99
+      security: []
+    delete:
+      summary: Delete
+      operationId: delete
+      description: ''
+      parameters: []
+      responses:
+        200:
+          description: ''
+          content:
+            application/json:
+              schema:
+                type: object
+                example:
+                  message: 'Success, 1 records deleted'
+                properties:
+                  message:
+                    type: string
+                    example: 'Success, 1 records deleted'
+        500:
+          description: ''
+          content:
+            application/json:
+              schema:
+                type: object
+                example:
+                  error: 'Error: Something went wrong'
+                properties:
+                  error:
+                    type: string
+                    example: 'Error: Something went wrong'
+      tags:
+        - Product
+      security: []
+    parameters:
+      -
+        in: path
+        name: product
+        description: 'The ID of the product to delete.'
+        example: 1
+        required: true
+        schema:
+          type: integer
+tags:
+  -
+    name: Auth
+    description: ''
+  -
+    name: Client
+    description: ''
+  -
+    name: Order
+    description: ''
+  -
+    name: Product
+    description: ''
+components:
+  securitySchemes:
+    default:
+      type: http
+      scheme: bearer
+      description: 'You can retrieve your token by visiting your dashboard and clicking <b>Generate API token</b>.'
+security:
+  -
+    default: []

@@ -1,0 +1,76 @@
+name: Client
+description: ''
+endpoints:
+  -
+    httpMethods:
+      - POST
+    uri: api/clients
+    metadata:
+      groupName: Client
+      groupDescription: ''
+      subgroup: ''
+      subgroupDescription: ''
+      title: Store
+      description: ''
+      authenticated: false
+      custom: []
+    headers:
+      Content-Type: application/json
+      Accept: application/json
+    urlParameters: []
+    cleanUrlParameters: []
+    queryParameters: []
+    cleanQueryParameters: []
+    bodyParameters:
+      name:
+        name: name
+        description: 'The name of the client.'
+        required: true
+        example: 'John Doe'
+        type: string
+        enumValues: []
+        exampleWasSpecified: true
+        custom: []
+      document:
+        name: document
+        description: 'The document of the client. Must follow the format "000.000.000-00".'
+        required: true
+        example: ullam
+        type: string
+        enumValues: []
+        exampleWasSpecified: false
+        custom: []
+    cleanBodyParameters:
+      name: 'John Doe'
+      document: ullam
+    fileParameters: []
+    responses:
+      -
+        status: 201
+        content: |-
+          {
+            "data": {
+              "name": "John Doe",
+              "document": "000.000.000-00",
+              "id": 1
+            },
+            "message": "ok"
+          }
+        headers: []
+        description: ''
+        custom: []
+      -
+        status: 500
+        content: |-
+          {
+            "error": "Error: Something went wrong"
+          }
+        headers: []
+        description: ''
+        custom: []
+    responseFields: []
+    auth: []
+    controller: null
+    method: null
+    route: null
+    custom: []
