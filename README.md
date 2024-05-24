@@ -34,7 +34,7 @@ Esta documentação não tem finalidade de demonstrar as requisições funcionan
 
 #### Autenticação:
 
-Para relizar autenticação, é necessário dispara uma request para:
+Para relizar autenticação, é necessário disparar uma request para:
 ```sh
 http://localhost:8000/api/auth/login
 ```
@@ -45,3 +45,19 @@ Com o seguinte corpo:
 }
 ```
 Obs: "000.000.000-00" é o CPF do usuário de testes criado
+
+Ou então criar um usuário, atráves do endpoint:
+
+(Verbo POST)
+
+```sh
+http://localhost:8000/api/clients
+```
+
+Com o seguinte corpo:
+```sh
+{
+  "name": "John Doe",
+  "document": "999.999.999-99"
+}
+```
