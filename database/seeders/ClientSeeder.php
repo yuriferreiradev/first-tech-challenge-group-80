@@ -15,7 +15,7 @@ class ClientSeeder extends Seeder
     /**
      * @var string
      */
-    protected const CLIENT_DOCUMENT = '000.000.00-00';
+    protected const CLIENT_DOCUMENT = '000.000.000-00';
 
     /**
      * Run the database seeds.
