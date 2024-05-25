@@ -15,7 +15,7 @@ services:
             - ./:/var/www
         networks:
             - laravel
-        command: sh -c "composer install php artisan scribe:generate && php -S 0.0.0.0:8000 -t public"
+        command: sh -c "composer install && php artisan scribe:generate && php -S 0.0.0.0:8000 -t public"
     # db mysql
     db:
         container_name: app-mysql
