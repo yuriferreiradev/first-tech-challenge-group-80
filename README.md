@@ -39,9 +39,11 @@ http://localhost:8000/docs
 ```
 Esta documentação não tem finalidade de demonstrar as requisições funcionando, somente a nível de documentação de parâmetros, endpoint e etc. 
 
-#### Autenticação:
+### Autenticação:
 
-Para relizar autenticação, é necessário disparar uma request para:
+#### Importante:
+Após a autenticação, todas as requisições subsequentes devem incluir o token de autenticação no cabeçalho Authorization usando o formato Bearer {token}. Este token será retornado na resposta da request de login.
+
 ```sh
 http://localhost:8000/api/auth/login
 ```
