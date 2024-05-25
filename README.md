@@ -6,22 +6,29 @@ Para visualizar o Event Storming do projeto, clique no link abaixo:
 
 ### Passo a passo
 
+#### Acessar a pasta
+```sh
+cd first-tech-challenge-group-80
+```
 #### Gerar arquivo de configuração de ambiente:
 ```sh
 cp .env.example .env
 ```
-#### Gerar chave de aplicação:
-```sh
-php artisan key:generate
-```
 #### Buildar os container do docker
 ```sh
 docker-compose up -d --build
-
 ```
-#### Seed para o banco de dados com dados inicais:
+#### Acessar o container da aplicação:
 ```sh
-docker exec app-laravel php artisan db:seed
+docker exec -it app-laravel bash
+```
+#### Gerar chave de aplicação (Dentro do container):
+```sh
+php artisan key:generate
+```
+#### Seed para o banco de dados com dados inicais (Dentro do container):
+```sh
+php artisan migrate --seed
 ```
 
 ### Detalhes
