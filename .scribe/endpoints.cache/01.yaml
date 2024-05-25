@@ -37,14 +37,14 @@ endpoints:
         name: document
         description: 'The document of the client. Must follow the format "000.000.000-00".'
         required: true
-        example: ullam
+        example: velit
         type: string
         enumValues: []
         exampleWasSpecified: false
         custom: []
     cleanBodyParameters:
       name: 'John Doe'
-      document: ullam
+      document: velit
     fileParameters: []
     responses:
       -

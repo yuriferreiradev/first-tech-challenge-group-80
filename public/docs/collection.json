@@ -9,8 +9,8 @@
         }
     ],
     "info": {
-        "name": "Tech Challenge",
-        "_postman_id": "6637de50-451d-4b06-ac75-70be9713f35c",
+        "name": "Laravel",
+        "_postman_id": "36f5002d-adbc-4ed0-892d-9e44c5449134",
         "description": "",
         "schema": "https:\/\/schema.getpostman.com\/json\/collection\/v2.1.0\/collection.json"
     },
@@ -138,7 +138,7 @@
                         ],
                         "body": {
                             "mode": "raw",
-                            "raw": "{\"name\":\"John Doe\",\"document\":\"ullam\"}"
+                            "raw": "{\"name\":\"John Doe\",\"document\":\"velit\"}"
                         },
                         "description": "",
                         "auth": {

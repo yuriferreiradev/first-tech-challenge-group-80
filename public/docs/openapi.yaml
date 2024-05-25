@@ -1,6 +1,6 @@
 openapi: 3.0.3
 info:
-  title: 'Tech Challenge'
+  title: Laravel
   description: ''
   version: 1.0.0
 servers:
@@ -167,7 +167,7 @@ paths:
                 document:
                   type: string
                   description: 'The document of the client. Must follow the format "000.000.000-00".'
-                  example: ullam
+                  example: velit
               required:
                 - name
                 - document
